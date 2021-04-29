@@ -33,7 +33,7 @@ exports.handler = async (event, context, cb) => {
             const{id} = product
             const {name,image,price,featured} = product.fields
             const url = image[0].url
-            return {id,name,url,price,featured,colors}
+            return {id,name,url,price,featured}
         })
         return {
             statusCode: 200,
