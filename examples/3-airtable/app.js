@@ -11,6 +11,17 @@ const fetchProducts = async () => {
             <div class ="info">
             <h5>${name}</h5>
             <h5 class="price">$${price}</h5>
+            <h5>${description}</h5>
+            <h5>${colors}</h5>
+            <h5>${company}</h5>
+            <h5>${stock}</h5>
+            <h5>${stars}</h5>
+            <h5>${reviews}</h5>
+            <h5>${category}</h5>
+            <h5>${shipping}</h5>
+            <h5>${featured}</h5>
+            <img class="product-img"
+            src="${image[0].url}"
             </div>
             </a>`
         }).join('')
