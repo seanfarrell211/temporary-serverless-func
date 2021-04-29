@@ -3,7 +3,7 @@ const Airtable = require('airtable-node');
  
 const airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
   .base('appGsVXh5XoDKuAQc')
-  .table('products')
+  .table('SansFurniture')
 
 exports.handler = async (event, context, cb) => {
     const { id } = event.queryStringParameters
