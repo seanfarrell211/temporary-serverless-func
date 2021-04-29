@@ -35,8 +35,8 @@ exports.handler = async (event, context, cb) => {
         const products = records.map((product) => {
             const{id} = product
             const {name,image,price,description,colors,company,stock,stars,reviews,category,shipping} = product.fields
-            const image = image[0].url
-            return {id,name,image,price,colors,company,stock,stars,reviews,category,shipping,description}
+            const images = image[0].url
+            return {id,name,images,price,colors,company,stock,stars,reviews,category,shipping,description}
         })
         return {
             headers: {
