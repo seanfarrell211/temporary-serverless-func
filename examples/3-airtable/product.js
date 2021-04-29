@@ -18,6 +18,7 @@ const fetchProduct = async () => {
             <h5 class="title">${name}</h5>
             <h5 class="price">$${price}</h5>
             <p class="desc">${description}</p>
+            <h5>${colors}>/h5>
             </div>
         </article>`
     }catch(error){
