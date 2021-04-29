@@ -17,6 +17,9 @@ exports.handler = async (event, context, cb) => {
                 }
             }
             return {
+                headers: {
+                    'Access-Control-Allow-Origin':'*',
+                },
                 statusCode:200,
                 body: JSON.stringify(product),
             }
@@ -36,6 +39,9 @@ exports.handler = async (event, context, cb) => {
             return {id,name,url,price,description,colors,company,stock,stars,reviews,category,shipping}
         })
         return {
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+            },
             statusCode: 200,
             body: JSON.stringify(products),
         }
