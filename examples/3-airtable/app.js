@@ -20,10 +20,6 @@ const fetchProducts = async () => {
             <h5>${category}</h5>
             <h5>${shipping}</h5>
             <h5>${featured}</h5>
-            <img class="product-img"
-          src="${image[0].url}"
-          alt="${name}"
-          />
             </div>
             </a>`
         }).join('')
