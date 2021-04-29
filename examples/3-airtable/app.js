@@ -5,7 +5,7 @@ const fetchProducts = async () => {
     const {data} = await axios.get('/api/3-z-complete');
         const products = data
         .map((product) => {
-            const{name,description,price,images,featured,colors,company,stock,stars,reviews,category,shipping,id,url} = product
+            const{name,description,price,image,featured,colors,company,stock,stars,reviews,category,shipping,id,url} = product
             return `<a href="product.html?id=${id}" class="product">
             <img src="${url}" alt ="${name}"/>
             <div class ="info">
