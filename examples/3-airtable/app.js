@@ -3,7 +3,8 @@ const result = document.querySelector('.result')
 const fetchProducts = async () => {
     try{
     const {data} = await axios.get('/api/3-z-complete');
-        const products = data
+    console.log(data)    
+    const products = data
         .map((product) => {
             const{name,description,price,featured,colors,company,stock,stars,reviews,category,shipping,id,image} = product
             return `<a href="product.html?id=${id}" class="product">
@@ -15,6 +16,7 @@ const fetchProducts = async () => {
             </div>
             </a>`
         }).join('')
+        
         result.innerHTML = products
    }catch(error){
         result.innerHTML = '<h4>There was error </h4>'
