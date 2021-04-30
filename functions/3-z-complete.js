@@ -17,7 +17,7 @@ exports.handler = async (event, context, cb) => {
             //         body:`No product with id: ${id}`,
             //     }
             // }
-            const {records} = await airtable.list(id)
+            const {records} = await airtable.retrieve(id)
             const products = records.map((product) => {
                 const{id} = product
                 const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = product.fields
