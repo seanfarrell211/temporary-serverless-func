@@ -34,7 +34,7 @@ exports.handler = async (event, context, cb) => {
         const {records} = await airtable.list()
         const products = records.map((product) => {
             const{id} = product
-            const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = product.fields
+            const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = product
             const image = images[0].url
             return {id,name,image,price,colors,company,stock,stars,reviews,category,shipping,description}
         })
