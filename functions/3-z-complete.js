@@ -6,6 +6,7 @@ const airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
   .table('products')
 
 exports.handler = async (event, context, cb) => {
+    console.log(event)
     const { id } = event.queryStringParameters
     if(id){
         try {
@@ -34,10 +35,11 @@ exports.handler = async (event, context, cb) => {
         const {records} = await airtable.list()
         const products = records.map((product) => {
             const{id} = product
-            const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = product
+            const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = product.field
             const image = images[0].url
             return {id,name,image,price,colors,company,stock,stars,reviews,category,shipping,description}
         })
+        console.log(products)
         return {
             headers: {
                 'Access-Control-Allow-Origin':'*',
