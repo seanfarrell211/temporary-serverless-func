@@ -6,9 +6,9 @@ const airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
   .table('products')
 
 exports.handler = async (event, context, cb) => {
-    console.log(event)
+    //console.log(event)
     const { id } = event.queryStringParameters
-    console.log(id)
+    //console.log(id)
     if(id){
         try {
             const product = await airtable.retrieve(id)
