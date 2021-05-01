@@ -19,7 +19,7 @@ exports.handler = async (event, context, cb) => {
                 }
             }
             
-            const{id} = product
+            // const{id} = product
             const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = product.fields
             const image = images[0].url
             const result = {id,name,image,price,colors,company,stock,stars,reviews,category,shipping,description}
@@ -34,7 +34,7 @@ exports.handler = async (event, context, cb) => {
         }catch (error){
             return {
                 statusCode: 500,
-                body: 'Server error',
+                body: error,
             }
         }
     }
