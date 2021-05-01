@@ -22,12 +22,13 @@ exports.handler = async (event, context, cb) => {
             const{id} = product
             const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = product.fields
             const image = images[0].url
+            const result = {id,name,image,price,colors,company,stock,stars,reviews,category,shipping,description}
             return {
                 headers: {
                     'Access-Control-Allow-Origin':'*',
                 },
                 statusCode:200,
-                body: JSON.stringify({id,name,image,price,colors,company,stock,stars,reviews,category,shipping,description}),
+                body: JSON.stringify(result),
             
             }
         }catch (error){
