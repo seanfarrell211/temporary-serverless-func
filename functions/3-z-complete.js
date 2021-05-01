@@ -6,9 +6,9 @@ const airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
   .table('products')
 
 exports.handler = async (event, context, cb) => {
-    //console.log(event)
+    console.log(event)
     const { id } = event.queryStringParameters
-    //console.log(id)
+    console.log(id)
     if(id){
         try {
             const product = await airtable.retrieve(id)
@@ -21,8 +21,8 @@ exports.handler = async (event, context, cb) => {
             
             // const{id} = product
             const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = product.fields
-            const image = images[0].url
-            const result = {id,name,image,price,colors,company,stock,stars,reviews,category,shipping,description}
+            // const image = images[0].url
+            const result = {id,name,images,price,colors,company,stock,stars,reviews,category,shipping,description}
             return {
                 headers: {
                     'Access-Control-Allow-Origin':'*',
@@ -41,9 +41,9 @@ exports.handler = async (event, context, cb) => {
     try {
         const {records} = await airtable.list()
         //console.log(records)
-        const products = records.map((product) => {
-            const{id} = product
-            const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = product.fields
+        const products_list = records.map((products) => {
+            const{id} = products
+            const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = products.fields
             const image = images[0].url
             return {id,name,image,price,colors,company,stock,stars,reviews,category,shipping,description}
         })
@@ -52,7 +52,7 @@ exports.handler = async (event, context, cb) => {
                 'Access-Control-Allow-Origin':'*',
             },
             statusCode: 200,
-            body: JSON.stringify(products),
+            body: JSON.stringify(products_list),
            
         }
     }catch(error){
