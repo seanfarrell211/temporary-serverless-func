@@ -21,8 +21,8 @@ exports.handler = async (event, context, cb) => {
             
             // const{id} = product
             const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = product.fields
-            // const image = images[0].url
-            const result = {id,name,images,price,colors,company,stock,stars,reviews,category,shipping,description}
+            const image = images[0].url
+            const result = {id,name,image,price,colors,company,stock,stars,reviews,category,shipping,description}
             return {
                 headers: {
                     'Access-Control-Allow-Origin':'*',
@@ -37,30 +37,28 @@ exports.handler = async (event, context, cb) => {
                 body: error,
             }
         }
-    }else{
-        try {
-            const {records} = await airtable.list()
-            //console.log(records)
-            const products = records.map((product) => {
-                const{id} = product
-                const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = product.fields
-                const image = images[0].url
-                return {id,name,image,price,colors,company,stock,stars,reviews,category,shipping,description}
-            })
-            return {
-                headers: {
-                    'Access-Control-Allow-Origin':'*',
-                },
-                statusCode: 200,
-                body: JSON.stringify(products),
-               
-            }
-        }catch(error){
-            return {
-                statusCode: 500,
-                body: error,
-            }
+    }
+    try {
+        const {records} = await airtable.list()
+        //console.log(records)
+        const products = records.map((product) => {
+            const{id} = product
+            const {name,images,price,description,colors,company,stock,stars,reviews,category,shipping} = product.fields
+            const image = images[0].url
+            return {id,name,image,price,colors,company,stock,stars,reviews,category,shipping,description}
+        })
+        return {
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+            },
+            statusCode: 200,
+            body: JSON.stringify(products),
+           
         }
-
+    }catch(error){
+        return {
+            statusCode: 500,
+            body: error,
+        }
     }
 }
