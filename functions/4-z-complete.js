@@ -20,9 +20,9 @@ exports.handler = async (event, context, cb) => {
             }
             
             // const{id} = product
-            const {name,images,desc1,header,desc2,header2,desc3} = product.fields
+            const {name,images,desc1,header,desc2,header2,desc3,nameprod1,uniqueid1,nameprod2,uniqueid2} = product.fields
             // const image = images[0].url
-            const result = {id,name,images,desc1,header,desc2,header2,desc3}
+            const result = {id,name,images,desc1,header,desc2,header2,desc3,nameprod1,uniqueid1,nameprod2,uniqueid2}
             return {
                 headers: {
                     'Access-Control-Allow-Origin':'*',
@@ -43,9 +43,9 @@ exports.handler = async (event, context, cb) => {
         //console.log(records)
         const products_list = records.map((products) => {
             const{id} = products
-            const {name,images,desc1,header,desc2,header2,desc3} = products.fields
+            const {name,images,desc1,header,desc2,header2,desc3,nameprod1,uniqueid1,nameprod2,uniqueid2} = products.fields
             const image = images[0].url
-            return {id,name,image,desc1,header,desc2,header2,desc3}
+            return {id,name,image,desc1,header,desc2,header2,desc3,nameprod1,uniqueid1,nameprod2,uniqueid2}
         })
         return {
             headers: {
